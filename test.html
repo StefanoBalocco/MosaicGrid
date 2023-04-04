@@ -1,0 +1,258 @@
+<html>
+
+<head>
+	<title>Titolo</title>
+	<style>
+		.grid {
+			display: grid;
+			column-gap: 0.1rem;
+			row-gap: 0.1rem;
+			grid-template-columns: repeat(auto-fill, minmax(calc((100%-0.2rem)/4), 1fr));
+			grid-auto-rows: 1px;
+		}
+
+		.grid>.item {
+			border: solid 0.4rem black;
+		}
+
+		.grid>.item>.content .text {
+			padding: 0.5rem;
+			color: white;
+		}
+
+		.grid>.item:nth-child(4n-3) {
+			background: darkgoldenrod;
+		}
+
+		.grid>.item:nth-child(4n-2) {
+			background: pink;
+		}
+
+		.grid>.item:nth-child(4n-2) .text {
+			color: black;
+		}
+
+		.grid>.item:nth-child(4n-1) {
+			background: green;
+		}
+
+		.grid>.item:nth-child(4n) {
+			background: purple;
+		}
+
+		.grid>.item>.content img {
+			max-width: 100%;
+			width: 100%;
+			height: auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<div id="mosaic" class="grid">
+			<div class="item">
+				<div class="content">
+					<div class="text">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum enim sed erat commodo
+						varius. Pellentesque
+						habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer
+						accumsan,
+						est a molestie
+						tempus, lorem libero pellentesque nisi, in pellentesque mi elit non dolor. Nunc ac quam lectus.
+						Quisque efficitur
+						eleifend dolor, eget mattis justo maximus eu. Sed elementum dolor purus, id lobortis dui
+						facilisis
+						sed. Proin at
+						pharetra est. Vivamus leo ipsum, malesuada id ultrices quis, iaculis vel odio. Aliquam lacinia
+						feugiat tortor eu
+						lobortis. Aliquam sit amet tellus eleifend, fermentum massa quis, viverra orci. Nam lacus metus,
+						tempor ac lectus nec,
+						pulvinar rutrum justo.
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<div class="text">
+						Nam varius faucibus purus sit amet ultrices. Interdum et malesuada fames ac ante ipsum primis in
+						faucibus. Aenean ex
+						nunc, pharetra id ultrices sit amet, consequat quis magna. Cras in pulvinar ipsum. Proin
+						venenatis
+						hendrerit ex.
+						Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse massa sapien, finibus
+						vitae justo in, ornare
+						fringilla nisi.
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<img src="https://picsum.photos/300/600">
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<img src="https://picsum.photos/300/200">
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<div class="text">
+						Mauris turpis ex, suscipit a tincidunt eget, suscipit hendrerit purus. Nulla maximus egestas
+						porta.
+						Orci varius natoque
+						penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas id tincidunt tellus,
+						quis tempus neque. Nunc
+						mattis egestas arcu, sit amet mattis sem suscipit non. Etiam in vehicula arcu, hendrerit
+						scelerisque
+						mi. Cras rutrum,
+						elit eget varius convallis, turpis nibh lobortis tellus, ut consequat neque elit id libero.
+						Quisque
+						eget neque
+						consequat, pretium ex eget, blandit orci.
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<div class="text">
+						Suspendisse ac placerat sapien. Donec porta feugiat dolor eu elementum. Donec venenatis finibus
+						ipsum, id euismod justo
+						imperdiet ut. Aenean neque nulla, tempor sed vestibulum id, pulvinar non erat. Morbi
+						sollicitudin
+						sem a diam gravida, et
+						hendrerit quam malesuada. Vivamus imperdiet non eros sed ornare. Fusce iaculis nisi nibh, at
+						semper
+						elit pellentesque
+						ac. Nunc dapibus odio a mauris sagittis, rhoncus finibus massa volutpat. Maecenas maximus ligula
+						quam, eu rutrum tortor
+						lobortis sed. Nullam tempus finibus nunc non sollicitudin. Sed lacinia, sem at lobortis
+						consectetur,
+						ex orci luctus
+						ligula, a pulvinar nibh tellus id est. Nunc vestibulum, elit sed pretium efficitur, eros metus
+						varius tortor, varius
+						vestibulum ipsum magna nec orci. Pellentesque iaculis arcu arcu, sollicitudin porta tortor
+						dignissim
+						id. Proin vulputate
+						risus aliquet, vulputate nibh a, porta erat. Vestibulum non turpis tempor, gravida enim et,
+						imperdiet elit. Praesent nec
+						leo urna.
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<div class="text">
+						Vestibulum nec dictum sapien. Sed vestibulum congue mattis. Pellentesque a mauris ipsum. Nam et
+						fermentum justo, nec
+						blandit lectus. Vestibulum orci ligula, porta a diam vitae, pulvinar faucibus tellus. Fusce
+						suscipit
+						magna velit, ut
+						feugiat mi feugiat tincidunt. Suspendisse tristique mauris est, non aliquam elit lobortis ac.
+						Quisque laoreet malesuada
+						justo, a pretium magna vestibulum a. Praesent eget orci id nisi elementum iaculis in id lacus.
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<img src="https://picsum.photos/300/800">
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<div class="text">
+						Fusce facilisis dolor vitae magna vulputate ullamcorper. Nam non tortor nec nibh sollicitudin
+						commodo at consequat
+						libero. Cras lorem urna, tincidunt sed eleifend et, hendrerit non sem. Aenean metus quam,
+						blandit id
+						viverra sed,
+						pellentesque eu felis. Cras vel est nec ex ultricies lobortis. Vivamus ligula leo, ullamcorper
+						in
+						congue nec, viverra
+						nec metus. Nullam massa augue, molestie ac dolor at, consectetur facilisis turpis. Aliquam erat
+						volutpat. Quisque
+						gravida augue eu quam feugiat lacinia. Morbi non massa convallis, consequat dolor eu, lacinia
+						nunc.
+						Ut vitae est
+						porttitor ante interdum tempus.
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<div class="text">
+						Donec vitae neque in mi venenatis commodo. Ut sagittis est et sapien egestas, id vulputate nunc
+						hendrerit. Aenean quis
+						eros augue. Nullam neque lacus, dapibus at augue et, pellentesque imperdiet ex. Donec commodo
+						finibus quam, non pretium
+						felis. Suspendisse viverra est in tempus molestie. Sed rutrum nisl nulla, tincidunt sagittis
+						felis
+						facilisis non. Nunc
+						pulvinar non nibh sit amet laoreet. Duis non quam commodo, efficitur nibh ut, rhoncus lectus.
+						Interdum et malesuada
+						fames ac ante ipsum primis in faucibus. Vestibulum congue sem orci, at lacinia ante condimentum
+						a.
+						Quisque sed nibh
+						eleifend, maximus diam ac, tempus mauris.
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<div class="text">
+						Duis sagittis dui et ipsum rhoncus ornare. Aenean nec ligula eu magna tempus luctus ac at neque.
+						Curabitur ipsum sapien,
+						luctus sodales porttitor nec, hendrerit vitae magna. Vestibulum non arcu ligula. Vivamus semper
+						leo
+						vitae tincidunt
+						suscipit. Phasellus dapibus nulla ut turpis posuere, eget fringilla lectus gravida. Nulla auctor
+						eleifend nunc, ac
+						auctor quam ultricies sed. Phasellus nec justo nulla. Aliquam fringilla ante in vestibulum
+						sagittis.
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<div class="text">
+						Donec vitae semper lacus. Proin id tincidunt eros. Cras et laoreet libero. Pellentesque dictum,
+						lectus id consequat
+						lobortis, est quam rhoncus libero, at tempor sem lacus tristique velit. Donec eu consectetur
+						odio.
+						Sed sit amet velit
+						arcu. Mauris elementum viverra laoreet. Integer dignissim nec arcu quis volutpat. Nunc bibendum
+						vulputate sodales.
+						Phasellus eget ultrices ante.
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="content">
+					<div class="text">
+						Suspendisse viverra nunc quis massa vehicula iaculis. Nunc eget sollicitudin ante, vel
+						ullamcorper
+						neque. Donec iaculis
+						est magna, nec auctor elit placerat at. Duis tempor consequat dolor, a euismod metus consequat
+						vel.
+						Sed quis nisl eget
+						augue consequat varius id sit amet risus. Sed a elit eu massa facilisis elementum a vel sapien.
+						Nulla a urna quis felis
+						molestie aliquet id in massa. Sed erat orci, ultrices sit amet vestibulum at, interdum sit amet
+						quam. Fusce non massa ac
+						dolor feugiat accumsan non et nisl. Phasellus efficitur, nibh vitae gravida ultrices, lorem sem
+						dignissim ex, eu
+						pulvinar dolor elit eget ex. Curabitur dapibus ullamcorper sapien nec aliquet.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="MosaicGrid.js"></script>
+	<script>
+		MosaicGrid.Create( { containerId: "mosaic", itemClass: 'item', contentClass: 'content' } );
+	</script>
+</body>
+
+</html>
