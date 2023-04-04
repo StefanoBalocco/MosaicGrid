@@ -10,9 +10,13 @@ declare namespace MosaicGrid {
         private _itemClass;
         private _rowHeight;
         private _rowGap;
-        constructor(options: LayoutOptions);
+        private _resizeHandler;
+        constructor(containerId: string, itemClass: string, contentClass: string);
+        Destroy(): void;
         private ResizeItem;
-        private ResizeItems;
+        ResizeItems(): void;
+        AppendItems(items: HTMLCollectionOf<HTMLElement>): void;
+        PrependItems(items: HTMLCollectionOf<HTMLElement>): void;
     }
     export function Create(options: LayoutOptions): Layout;
     export {};
