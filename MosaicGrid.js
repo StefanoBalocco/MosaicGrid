@@ -2,13 +2,12 @@
 var MosaicGrid;
 (function (MosaicGrid) {
     class Layout {
-        constructor(containerId, itemClass, contentClass) {
+        constructor(containerId, itemClass) {
             this._rowHeight = 0;
             this._rowGap = 0;
             this._container = document.getElementById(containerId);
-            this._contentClass = contentClass;
             this._itemClass = itemClass;
-            this._resizeHandler = () => { this.ResizeItems; };
+            this._resizeHandler = () => { this.ResizeItems(); };
             if (this._container) {
                 window.addEventListener('resize', this._resizeHandler);
                 this.ResizeItems();
@@ -36,19 +35,25 @@ var MosaicGrid;
                 }
             }
             if (0 < (this._rowHeight + this._rowGap)) {
-                const content = item.getElementsByClassName(this._contentClass);
+                const content = item.querySelectorAll(':scope > div');
                 if (content && (1 === content.length)) {
-                    let height = parseFloat(window.getComputedStyle(item).getPropertyValue('border-top-width'));
-                    height += parseFloat(window.getComputedStyle(item).getPropertyValue('border-bottom-width'));
-                    height += content[0].getBoundingClientRect().height;
+                    const style = window.getComputedStyle(item);
+                    let height = (parseFloat(style.getPropertyValue('border-top-width')) || 0)
+                        + (parseFloat(style.getPropertyValue('border-bottom-width')) || 0)
+                        + (parseFloat(style.getPropertyValue('margin-top')) || 0)
+                        + (parseFloat(style.getPropertyValue('margin-bottom')) || 0)
+                        + (parseFloat(style.getPropertyValue('padding-top')) || 0)
+                        + (parseFloat(style.getPropertyValue('padding-bottom')) || 0)
+                        + content[0].getBoundingClientRect().height;
                     item.style.gridRowEnd = 'span ' + Math.ceil((height + this._rowGap) / (this._rowHeight + this._rowGap));
                 }
             }
         }
         ResizeItems() {
             if (this._container) {
-                this._rowHeight = parseFloat(window.getComputedStyle(this._container).getPropertyValue('grid-auto-rows'));
-                this._rowGap = parseFloat(window.getComputedStyle(this._container).getPropertyValue('grid-row-gap'));
+                const style = window.getComputedStyle(this._container);
+                this._rowHeight = (parseFloat(style.getPropertyValue('grid-auto-rows')) || 0);
+                this._rowGap = (parseFloat(style.getPropertyValue('grid-row-gap')) || 0);
                 const items = this._container.getElementsByClassName(this._itemClass);
                 const cFL = items.length;
                 for (let iFL = 0; iFL < cFL; iFL++) {
@@ -81,8 +86,8 @@ var MosaicGrid;
             }
         }
     }
-    function Create(options) {
-        return new Layout(options.containerId, options.itemClass, options.contentClass);
+    function Create(containerId, itemClass) {
+        return new Layout(containerId, itemClass);
     }
     MosaicGrid.Create = Create;
 })(MosaicGrid || (MosaicGrid = {}));
