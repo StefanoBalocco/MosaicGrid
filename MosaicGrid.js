@@ -2,22 +2,18 @@
 var MosaicGrid;
 (function (MosaicGrid) {
     class Layout {
-        constructor(containerId, itemClass) {
-            this._rowHeight = 0;
-            this._rowGap = 0;
-            this._container = document.getElementById(containerId);
+        constructor(container, itemClass) {
+            this._container = container;
             this._itemClass = itemClass;
             this._resizeHandler = () => { this.ResizeItems(); };
-            if (this._container) {
-                window.addEventListener('resize', this._resizeHandler);
-                this.ResizeItems();
-            }
+            window.addEventListener('resize', this._resizeHandler);
+            this.ResizeItems();
         }
         Destroy() {
             window.removeEventListener('resize', this._resizeHandler);
-            this._container = null;
+            delete this._container;
         }
-        ResizeItem(item) {
+        ResizeItem(rowHeight, rowGap, item) {
             const images = item.getElementsByTagName('img');
             if (0 < images.length) {
                 const cSL = images.length;
@@ -30,11 +26,11 @@ var MosaicGrid;
                                 resolve(item);
                             }
                         });
-                        promise.then((item) => { this.ResizeItem(item); }).catch(() => { });
+                        promise.then((item) => { this.ResizeItem(rowHeight, rowGap, item); }).catch(() => { });
                     }
                 }
             }
-            if (0 < (this._rowHeight + this._rowGap)) {
+            if (0 < (rowHeight + rowGap)) {
                 const content = item.querySelectorAll(':scope > div');
                 if (content && (1 === content.length)) {
                     const style = window.getComputedStyle(item);
@@ -45,39 +41,50 @@ var MosaicGrid;
                         + (parseFloat(style.getPropertyValue('padding-top')) || 0)
                         + (parseFloat(style.getPropertyValue('padding-bottom')) || 0)
                         + content[0].getBoundingClientRect().height;
-                    item.style.gridRowEnd = 'span ' + Math.ceil((height + this._rowGap) / (this._rowHeight + this._rowGap));
+                    if ((1 === rowHeight) && (0 === rowGap)) {
+                        item.style.gridRowEnd = 'span ' + Math.floor(height + rowGap);
+                    }
+                    else {
+                        item.style.gridRowEnd = 'span ' + Math.ceil((height + rowGap) / (rowHeight + rowGap));
+                    }
                 }
             }
         }
         ResizeItems() {
             if (this._container) {
-                const style = window.getComputedStyle(this._container);
-                this._rowHeight = (parseFloat(style.getPropertyValue('grid-auto-rows')) || 0);
-                this._rowGap = (parseFloat(style.getPropertyValue('grid-row-gap')) || 0);
                 const items = this._container.getElementsByClassName(this._itemClass);
+                const style = window.getComputedStyle(this._container);
+                const rowHeight = (parseFloat(style.getPropertyValue('grid-auto-rows')) || 0);
+                const rowGap = (parseFloat(style.getPropertyValue('grid-row-gap')) || 0);
                 const cFL = items.length;
                 for (let iFL = 0; iFL < cFL; iFL++) {
                     const item = items[iFL];
-                    this.ResizeItem(item);
+                    this.ResizeItem(rowHeight, rowGap, item);
                 }
             }
         }
         AppendItems(items) {
             if (this._container) {
+                const style = window.getComputedStyle(this._container);
+                const rowHeight = (parseFloat(style.getPropertyValue('grid-auto-rows')) || 0);
+                const rowGap = (parseFloat(style.getPropertyValue('grid-row-gap')) || 0);
                 const cFL = items.length;
                 for (let iFL = 0; iFL < cFL; iFL++) {
                     const item = this._container.appendChild(items[iFL]);
-                    this.ResizeItem(item);
+                    this.ResizeItem(rowHeight, rowGap, item);
                 }
             }
         }
         PrependItems(items) {
             if (this._container) {
                 if (0 < this._container.childNodes.length) {
+                    const style = window.getComputedStyle(this._container);
+                    const rowHeight = (parseFloat(style.getPropertyValue('grid-auto-rows')) || 0);
+                    const rowGap = (parseFloat(style.getPropertyValue('grid-row-gap')) || 0);
                     const cFL = items.length;
                     for (let iFL = 0; iFL < cFL; iFL++) {
                         const item = this._container.insertBefore(items[iFL], this._container.childNodes[0]);
-                        this.ResizeItem(item);
+                        this.ResizeItem(rowHeight, rowGap, item);
                     }
                 }
                 else {
@@ -87,7 +94,12 @@ var MosaicGrid;
         }
     }
     function Create(containerId, itemClass) {
-        return new Layout(containerId, itemClass);
+        let returnValue = null;
+        const container = document.getElementById(containerId);
+        if (container) {
+            returnValue = new Layout(container, itemClass);
+        }
+        return returnValue;
     }
     MosaicGrid.Create = Create;
 })(MosaicGrid || (MosaicGrid = {}));

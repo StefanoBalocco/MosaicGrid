@@ -7,9 +7,11 @@
     "type": "git",
     "url": "https://github.com/StefanoBalocco/MosaicGrid"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": [
     "mosaic",
+    "layout",
+    "grid",
     "masonry"
   ],
   "author": "Stefano Balocco <stefano.balocco@gmail.com>",
