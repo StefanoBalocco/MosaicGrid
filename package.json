@@ -1,13 +1,18 @@
 {
   "name": "MosaicGrid",
   "description": "Masonry-like effect using grid",
-  "main": "MosaicGrid.min.js",
-  "types": "MosaicGrid.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./MosaicGrid.d.ts",
+      "default": "./MosaicGrid.min.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/StefanoBalocco/MosaicGrid"
   },
-  "version": "1.0.2",
+  "version": "2.0.0",
   "keywords": [
     "mosaic",
     "layout",
@@ -15,17 +20,16 @@
     "masonry"
   ],
   "author": "Stefano Balocco <stefano.balocco@gmail.com>",
-  "license": "",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/StefanoBalocco/MosaicGrid/issues"
   },
   "homepage": "https://github.com/StefanoBalocco/MosaicGrid",
-  "dependencies": {},
   "scripts": {
-    "build": "node_modules/typescript/bin/tsc && node_modules/terser/bin/terser MosaicGrid.js -o MosaicGrid.min.js -m -c --mangle-props regex=/^_/"
+    "build": "node_modules/typescript/bin/tsc && node_modules/terser/bin/terser MosaicGrid.js -o MosaicGrid.min.js -m -c --module --mangle-props regex=/^_/"
   },
   "devDependencies": {
-    "terser": "^5",
-    "typescript": "^4"
+    "terser": "^5.46.0",
+    "typescript": "^5.9.3"
   }
 }
