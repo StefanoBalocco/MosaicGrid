@@ -9,8 +9,8 @@ class MosaicGridLayout {
 	private _resizeRequested: boolean = false;
 
 	constructor( container: HTMLElement, itemClass: string ) {
+		this._style = window.getComputedStyle( container );
 		this._container = container;
-		this._style = window.getComputedStyle( this._container );
 		this._itemClass = itemClass;
 		this._resizeHandler = (): void => {
 			if( !this._resizeRequested ) {
@@ -20,7 +20,6 @@ class MosaicGridLayout {
 						if( this._resizeRequested ) {
 							this.ResizeItems();
 							this._resizeRequested = false;
-
 						}
 					}
 				);

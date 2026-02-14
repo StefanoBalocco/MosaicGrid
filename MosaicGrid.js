@@ -5,8 +5,8 @@ class MosaicGridLayout {
     _resizeHandler;
     _resizeRequested = false;
     constructor(container, itemClass) {
+        this._style = window.getComputedStyle(container);
         this._container = container;
-        this._style = window.getComputedStyle(this._container);
         this._itemClass = itemClass;
         this._resizeHandler = () => {
             if (!this._resizeRequested) {
