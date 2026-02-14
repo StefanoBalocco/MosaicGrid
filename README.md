@@ -10,7 +10,7 @@ Include directly via CDN:
 
 ```html
 <script type="module">
-  import { MosaicGrid } from 'https://cdn.jsdelivr.net/gh/StefanoBalocco/MosaicGrid@latest/MosaicGrid.min.js';
+  import MosaicGrid from 'https://cdn.jsdelivr.net/gh/StefanoBalocco/MosaicGrid@latest/MosaicGrid.min.js';
 </script>
 ```
 
@@ -54,7 +54,7 @@ The container must be a CSS Grid. Each item needs exactly one `<div>` child wrap
 ### JavaScript
 
 ```js
-import { MosaicGrid } from 'https://cdn.jsdelivr.net/gh/StefanoBalocco/MosaicGrid@latest/MosaicGrid.min.js';
+import MosaicGrid from 'https://cdn.jsdelivr.net/gh/StefanoBalocco/MosaicGrid@latest/MosaicGrid.min.js';
 
 const layout = MosaicGrid('mosaic', 'item');
 ```

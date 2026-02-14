@@ -114,7 +114,7 @@ class MosaicGridLayout {
 	}
 }
 
-export function MosaicGrid( containerId: string, itemClass: string ): Undefinedable<MosaicGridLayout> {
+export default function MosaicGrid( containerId: string, itemClass: string ): Undefinedable<MosaicGridLayout> {
 	let returnValue: Undefinedable<MosaicGridLayout>;
 	const container: Nullable<HTMLElement> = document.getElementById( containerId );
 	if( container ) {
