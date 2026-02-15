@@ -102,7 +102,7 @@ class MosaicGridLayout {
         this._AppendOrPrepend(items, false);
     }
 }
-export function MosaicGrid(containerId, itemClass) {
+export default function MosaicGrid(containerId, itemClass) {
     let returnValue;
     const container = document.getElementById(containerId);
     if (container) {

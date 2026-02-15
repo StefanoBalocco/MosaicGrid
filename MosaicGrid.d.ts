@@ -15,5 +15,5 @@ declare class MosaicGridLayout {
     AppendItems(items: NodeListOf<HTMLElement>): void;
     PrependItems(items: NodeListOf<HTMLElement>): void;
 }
-export declare function MosaicGrid(containerId: string, itemClass: string): Undefinedable<MosaicGridLayout>;
+export default function MosaicGrid(containerId: string, itemClass: string): Undefinedable<MosaicGridLayout>;
 export {};
