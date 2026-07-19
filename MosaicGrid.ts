@@ -8,7 +8,7 @@ class MosaicGridLayout {
 	private readonly _resizeHandler: () => void;
 	private _resizeRequested: boolean = false;
 
-	constructor( container: HTMLElement, itemClass: string ) {
+		constructor( container: HTMLElement, itemClass: string ) {
 		this._style = window.getComputedStyle( container );
 		this._container = container;
 		this._itemClass = itemClass;
@@ -75,7 +75,7 @@ class MosaicGridLayout {
 	}
 
 	private _AppendOrPrepend( items: NodeListOf<HTMLElement>, append: boolean = true ): void {
-		append = append || !( 0 < this._container.childNodes.length );
+		append ||= !this._container.childNodes.length;
 		const rowHeight: number = this._rowHeight;
 		const rowGap: number = this._rowGap;
 		const cFL: number = items.length;

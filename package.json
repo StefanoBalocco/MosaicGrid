@@ -1,5 +1,5 @@
 {
-  "name": "MosaicGrid",
+  "name": "@stefanobalocco/mosaicgrid",
   "description": "Masonry-like effect using grid",
   "type": "module",
   "exports": {
@@ -7,12 +7,26 @@
       "types": "./MosaicGrid.d.ts",
       "default": "./MosaicGrid.min.js"
     }
-  },
-  "repository": {
+	},
+	"files": [
+		"MosaicGrid.js",
+		"MosaicGrid.min.js",
+		"MosaicGrid.d.ts",
+		"MosaicGrid.ts",
+		"MosaicGrid.test.js",
+		"MosaicGrid.test.ts",
+		"build.mjs",
+		"tsconfig.json",
+		"tsconfig.tests.json"
+	],
+	"repository": {
     "type": "git",
     "url": "https://github.com/StefanoBalocco/MosaicGrid"
   },
-  "version": "2.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "2.1.1",
   "keywords": [
     "mosaic",
     "layout",
@@ -20,16 +34,24 @@
     "masonry"
   ],
   "author": "Stefano Balocco <stefano.balocco@gmail.com>",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/StefanoBalocco/MosaicGrid/issues"
   },
   "homepage": "https://github.com/StefanoBalocco/MosaicGrid",
   "scripts": {
-    "build": "node_modules/typescript/bin/tsc && node_modules/terser/bin/terser MosaicGrid.js -o MosaicGrid.min.js -m -c --module --mangle-props regex=/^_/"
+    "build": "node build.mjs all",
+    "build:library": "node build.mjs library",
+    "build:tests": "node build.mjs tests",
+    "tests": "c8 --reporter=text --reporter=lcov ava '*.test.js' --verbose"
   },
   "devDependencies": {
-    "terser": "^5.46.0",
-    "typescript": "^5.9.3"
+    "@stefanobalocco/tersercompanion": "~1",
+    "@types/jsdom": "~28",
+    "ava": "~6",
+    "c8": "~12",
+    "jsdom": "~28",
+    "terser": "~5",
+    "typescript": "~6"
   }
 }

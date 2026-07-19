@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "ESNext",
+    "module": "ESNext",
     "moduleResolution": "bundler",
-    "declaration": true,
+    "declaration": false,
     "removeComments": true,
     "strict": true,
     "noImplicitAny": true,
@@ -12,12 +12,12 @@
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noImplicitReturns": true,
     "allowSyntheticDefaultImports": true
   },
   "files":
   [
-    "MosaicGrid.ts"
+	"MosaicGrid.test.ts"
   ]
 }

@@ -65,7 +65,7 @@ class MosaicGridLayout {
         }
     }
     _AppendOrPrepend(items, append = true) {
-        append = append || !(0 < this._container.childNodes.length);
+        append ||= !this._container.childNodes.length;
         const rowHeight = this._rowHeight;
         const rowGap = this._rowGap;
         const cFL = items.length;

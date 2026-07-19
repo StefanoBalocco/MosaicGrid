@@ -6,11 +6,21 @@ Calculates `grid-row-end` spans based on content height, achieving a Pinterest-s
 
 ## Installation
 
-Include directly via CDN:
+Install from npm:
+
+```bash
+npm install @stefanobalocco/mosaicgrid
+```
+
+```js
+import MosaicGrid from '@stefanobalocco/mosaicgrid';
+```
+
+Or include directly via CDN:
 
 ```html
 <script type="module">
-  import MosaicGrid from 'https://cdn.jsdelivr.net/gh/StefanoBalocco/MosaicGrid@latest/MosaicGrid.min.js';
+  import MosaicGrid from 'https://cdn.jsdelivr.net/gh/StefanoBalocco/MosaicGrid@2.1.1/MosaicGrid.min.js';
 </script>
 ```
 
@@ -49,7 +59,7 @@ The container must be a CSS Grid. Each item needs exactly one `<div>` child wrap
 }
 ```
 
-`grid-auto-rows` controls the row granularity: `1px` gives pixel-perfect positioning, larger values snap to a row grid.
+`grid-auto-rows` controls the row granularity: `1px` gives one-pixel grid-row increments. When MosaicGrid resolves row height to `1` and row gap to `0`, fractional content heights are floored; for other positive combined row-height/gap values the span rounds up; when the resolved sum is nonpositive, `gridRowEnd` is left unchanged.
 
 ### JavaScript
 
@@ -65,7 +75,7 @@ const layout = MosaicGrid('mosaic', 'item');
 
 | Method | Description |
 |---|---|
-| `ResizeItems()` | Recalculates all item spans. Called automatically on window resize (throttled via `requestAnimationFrame`). |
+| `ResizeItems()` | Recalculates all item spans. Called automatically on window resize (coalesced via `requestAnimationFrame`). |
 | `AppendItems(items)` | Appends elements to the grid and sizes them. |
 | `PrependItems(items)` | Prepends elements to the grid and sizes them. |
 | `Destroy()` | Removes the resize listener and stops any pending recalculation. |
@@ -85,6 +95,14 @@ npm run build
 
 Compiles TypeScript with `tsc`, then minifies with terser.
 
+## Testing
+
+```bash
+npm run tests
+```
+
+Tests run in jsdom through [AVA](https://avajs.dev/) against both the original and minified builds. [c8](https://github.com/bcoe/c8) prints coverage to the terminal and writes LCOV data to `coverage/lcov.info`.
+
 ## License
 
-[MIT](LICENSE)
+[BSD-3-Clause](LICENSE)
