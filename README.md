@@ -20,7 +20,7 @@ Or include directly via CDN:
 
 ```html
 <script type="module">
-  import MosaicGrid from 'https://cdn.jsdelivr.net/gh/StefanoBalocco/MosaicGrid@2.1.1/MosaicGrid.min.js';
+  import MosaicGrid from 'https://cdn.jsdelivr.net/npm/@stefanobalocco/mosaicgrid@latest/MosaicGrid.min.js';
 </script>
 ```
 
