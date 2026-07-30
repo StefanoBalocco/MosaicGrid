@@ -20,7 +20,7 @@ Or include directly via CDN:
 
 ```html
 <script type="module">
-  import MosaicGrid from 'https://cdn.jsdelivr.net/npm/@stefanobalocco/mosaicgrid@latest/MosaicGrid.min.js';
+  import MosaicGrid from 'https://cdn.jsdelivr.net/npm/@stefanobalocco/mosaicgrid@latest/dist/MosaicGrid.min.js';
 </script>
 ```
 
@@ -64,7 +64,7 @@ The container must be a CSS Grid. Each item needs exactly one `<div>` child wrap
 ### JavaScript
 
 ```js
-import MosaicGrid from 'https://cdn.jsdelivr.net/gh/StefanoBalocco/MosaicGrid@latest/MosaicGrid.min.js';
+import MosaicGrid from 'https://cdn.jsdelivr.net/npm/@stefanobalocco/mosaicgrid@latest/dist/MosaicGrid.min.js';
 
 const layout = MosaicGrid('mosaic', 'item');
 ```
@@ -93,7 +93,7 @@ npm install
 npm run build
 ```
 
-Compiles TypeScript with `tsc`, then minifies with terser.
+Builds the library and tests with `@stefanobalocco/tsbuild`, which compiles TypeScript and minifies the library bundle.
 
 ## Testing
 

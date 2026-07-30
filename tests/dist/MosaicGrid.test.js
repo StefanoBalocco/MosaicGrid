@@ -1,7 +1,7 @@
 import test from 'ava';
 import { JSDOM } from 'jsdom';
-import MosaicGridOriginal from './MosaicGrid.js';
-import MosaicGridMinified from './MosaicGrid.min.js';
+import MosaicGridOriginal from '../../dist/MosaicGrid.js';
+import MosaicGridMinified from '../../dist/MosaicGrid.min.js';
 const dom = new JSDOM('<html><body></body></html>', { url: 'http://localhost' });
 const window = dom.window;
 globalThis.window = window;
@@ -25,7 +25,7 @@ function clearRaf() {
     _rafQueue = [];
 }
 const _styleRegistry = new WeakMap();
-window.getComputedStyle = (element, pseudoElt) => {
+window.getComputedStyle = (element, _pseudoElt) => {
     const registered = _styleRegistry.get(element) ?? {};
     return {
         getPropertyValue(property) {

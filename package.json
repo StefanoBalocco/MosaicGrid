@@ -1,32 +1,27 @@
 {
   "name": "@stefanobalocco/mosaicgrid",
   "description": "Masonry-like effect using grid",
+  "version": "3.0.0",
   "type": "module",
+  "types": "dist/MosaicGrid.d.ts",
   "exports": {
     ".": {
-      "types": "./MosaicGrid.d.ts",
-      "default": "./MosaicGrid.min.js"
+      "types": "./dist/MosaicGrid.d.ts",
+      "default": "./dist/MosaicGrid.min.js"
     }
-	},
-	"files": [
-		"MosaicGrid.js",
-		"MosaicGrid.min.js",
-		"MosaicGrid.d.ts",
-		"MosaicGrid.ts",
-		"MosaicGrid.test.js",
-		"MosaicGrid.test.ts",
-		"build.mjs",
-		"tsconfig.json",
-		"tsconfig.tests.json"
-	],
-	"repository": {
+  },
+  "files": [
+    "dist/MosaicGrid.js",
+    "dist/MosaicGrid.min.js",
+    "dist/MosaicGrid.d.ts"
+  ],
+  "repository": {
     "type": "git",
     "url": "https://github.com/StefanoBalocco/MosaicGrid"
   },
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.1.1",
   "keywords": [
     "mosaic",
     "layout",
@@ -40,18 +35,16 @@
   },
   "homepage": "https://github.com/StefanoBalocco/MosaicGrid",
   "scripts": {
-    "build": "node build.mjs all",
-    "build:library": "node build.mjs library",
-    "build:tests": "node build.mjs tests",
-    "tests": "c8 --reporter=text --reporter=lcov ava '*.test.js' --verbose"
+    "build": "tsBuild all",
+    "build:library": "tsBuild library",
+    "build:tests": "tsBuild tests",
+    "tests": "c8 --include=src --include=dist --exclude-after-remap --per-file --reporter=text --reporter=lcov ava 'tests/dist/*.test.js' --verbose"
   },
   "devDependencies": {
-    "@stefanobalocco/tersercompanion": "~1",
-    "@types/jsdom": "~28",
-    "ava": "~6",
-    "c8": "~12",
-    "jsdom": "~28",
-    "terser": "~5",
-    "typescript": "~6"
+    "@stefanobalocco/tsbuild": "^1",
+    "@types/jsdom": "^28",
+    "ava": "^8",
+    "c8": "^12",
+    "jsdom": "^28"
   }
 }

@@ -1,8 +1,8 @@
 import test from 'ava';
 import { JSDOM } from 'jsdom';
-import MosaicGridOriginal from './MosaicGrid.js';
+import MosaicGridOriginal from '../../dist/MosaicGrid.js';
 // @ts-expect-error MosaicGrid.min.js intentionally shares the original public API.
-import MosaicGridMinified from './MosaicGrid.min.js';
+import MosaicGridMinified from '../../dist/MosaicGrid.min.js';
 
 // ── JSDOM bootstrap ───────────────────────────────────────────────────────────
 
@@ -39,7 +39,7 @@ function clearRaf(): void {
 
 const _styleRegistry: WeakMap<Element, Readonly<Record<string, string>>> = new WeakMap();
 
-window.getComputedStyle = ( element: Element, pseudoElt?: string | null ): CSSStyleDeclaration => {
+window.getComputedStyle = ( element: Element, _pseudoElt?: string | null ): CSSStyleDeclaration => {
 	const registered: Readonly<Record<string, string>> = _styleRegistry.get( element ) ?? {};
 
 	return {
